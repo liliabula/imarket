@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  profession: MyString
+  location: MyString
+  price: 9.99
+  description: MyText
+  industries: MyText
+  expertise: MyText
+
+two:
+  name: MyString
+  profession: MyString
+  location: MyString
+  price: 9.99
+  description: MyText
+  industries: MyText
+  expertise: MyText

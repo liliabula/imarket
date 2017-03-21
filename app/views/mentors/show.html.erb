@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @mentor.name %>
+</p>
+
+<p>
+  <strong>Profession:</strong>
+  <%= @mentor.profession %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @mentor.location %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @mentor.price %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @mentor.description %>
+</p>
+
+<p>
+  <strong>Industries:</strong>
+  <%= @mentor.industries %>
+</p>
+
+<p>
+  <strong>Expertise:</strong>
+  <%= @mentor.expertise %>
+</p>
+
+<%= link_to 'Edit', edit_mentor_path(@mentor) %> |
+<%= link_to 'Back', mentors_path %>

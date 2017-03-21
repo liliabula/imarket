@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320005426) do
+ActiveRecord::Schema.define(version: 20170321231609) do
+
+  create_table "mentors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "profession"
+    t.string   "location"
+    t.decimal  "price"
+    t.text     "description"
+    t.text     "industries"
+    t.text     "expertise"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
