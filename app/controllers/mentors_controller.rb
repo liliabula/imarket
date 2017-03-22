@@ -57,7 +57,7 @@ class MentorsController < ApplicationController
     end
 
     def mentor_params
-      params.require(:mentor).permit(:name, :profession, :location, :price, :description, :industries, :expertise)
+      params.require(:mentor).permit(:name, :profession, :location, :price, :description, :industries, :expertise, :cover)
     end
 
     def check_user

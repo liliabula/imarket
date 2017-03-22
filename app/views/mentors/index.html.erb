@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Name</th>
       <th>Profession</th>
       <th>Location</th>
@@ -19,6 +20,7 @@
   <tbody>
     <% @mentors.each do |mentor| %>
       <tr>
+        <td><%= image_tag mentor.cover.url(:thumb)%></td>
         <td><%= mentor.name %></td>
         <td><%= mentor.profession %></td>
         <td><%= mentor.location %></td>
