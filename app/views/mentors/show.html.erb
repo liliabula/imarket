@@ -35,5 +35,8 @@
   <%= @mentor.expertise %>
 </p>
 
+<% if @mentor.user == current_user %>
 <%= link_to 'Edit', edit_mentor_path(@mentor) %> |
+<% end %>
+
 <%= link_to 'Back', mentors_path %>

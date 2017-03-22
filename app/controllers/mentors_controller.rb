@@ -1,30 +1,23 @@
 class MentorsController < ApplicationController
   before_action :set_mentor, only: [:show, :edit, :update, :destroy]
-
-  # GET /mentors
-  # GET /mentors.json
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_user, only: [:edit, :update, :destroy]
   def index
     @mentors = Mentor.all
   end
 
-  # GET /mentors/1
-  # GET /mentors/1.json
   def show
   end
 
-  # GET /mentors/new
   def new
-    @mentor = Mentor.new
+    @mentor = current_user.mentors.build
   end
 
-  # GET /mentors/1/edit
   def edit
   end
 
-  # POST /mentors
-  # POST /mentors.json
   def create
-    @mentor = Mentor.new(mentor_params)
+    @mentor = current_user.mentors.build(mentor_params)
 
     respond_to do |format|
       if @mentor.save
@@ -37,8 +30,6 @@ class MentorsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /mentors/1
-  # PATCH/PUT /mentors/1.json
   def update
     respond_to do |format|
       if @mentor.update(mentor_params)
@@ -51,8 +42,6 @@ class MentorsController < ApplicationController
     end
   end
 
-  # DELETE /mentors/1
-  # DELETE /mentors/1.json
   def destroy
     @mentor.destroy
     respond_to do |format|
@@ -62,13 +51,18 @@ class MentorsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_mentor
       @mentor = Mentor.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def mentor_params
       params.require(:mentor).permit(:name, :profession, :location, :price, :description, :industries, :expertise)
+    end
+
+    def check_user
+      if current_user != @mentor.user
+        redirect_to root_url, alert: "Sorry, you don't have access to this page"
+      end
     end
 end

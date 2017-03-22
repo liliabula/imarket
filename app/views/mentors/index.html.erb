@@ -27,8 +27,10 @@
         <td><%= mentor.industries %></td>
         <td><%= mentor.expertise %></td>
         <td><%= link_to 'Show', mentor %></td>
-        <td><%= link_to 'Edit', edit_mentor_path(mentor) %></td>
-        <td><%= link_to 'Destroy', mentor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if mentor.user == current_user %>
+          <td><%= link_to 'Edit', edit_mentor_path(mentor) %></td>
+          <td><%= link_to 'Destroy', mentor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
