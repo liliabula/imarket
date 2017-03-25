@@ -1,42 +1,51 @@
 <p id="notice"><%= notice %></p>
-<%= image_tag @mentor.cover.url(:medium)%>
-<p>
-  <strong>Name:</strong>
-  <%= @mentor.name %>
-</p>
 
-<p>
-  <strong>Profession:</strong>
-  <%= @mentor.profession %>
-</p>
+<div class="row">
+  <div class="col l4">
+    <%= image_tag @mentor.cover.url(:medium), class: "img-circular show-img"%>
+    <p>
+      <strong>Price:</strong>
+      <%= number_to_currency(@mentor.price) %>
+    </p>
+    <p>
+      <strong>Rating</strong>
+    </p>
+    <span> <%= link_to 'Book a Call', mentors_path, class: "btn btn-devise"%></span>
+    <br>
+  </div>
+  <div class="col l5">
+    <h3>Hey, I'm <%= @mentor.name %></h3>
+    <p><strong><%= @mentor.profession %></strong></p>
+    <p><strong>Location:</strong>
+      <%= @mentor.location %></p>
+    <p><%= @mentor.description %></p>
+    <br>
+    <p>
+    <strong>Industries:</strong>
+    <%= @mentor.industries %>
+    </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @mentor.location %>
-</p>
+    <p>
+    <strong>Expertise:</strong>
+    <%= @mentor.expertise %>
+    </p>
+    <% if @mentor.user == current_user %>
+    <%= link_to 'Edit', edit_mentor_path(@mentor) %> |
+    <% end %>
+    <%= link_to 'Back', mentors_path %>
+  </div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @mentor.price %>
-</p>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @mentor.description %>
-</p>
+<div class="row">
+  <div class="col l4">
+    
+  </div>
+  <div class="col l1">
+  </div>
+  <div class="col l5">
+    
+  </div>
 
-<p>
-  <strong>Industries:</strong>
-  <%= @mentor.industries %>
-</p>
 
-<p>
-  <strong>Expertise:</strong>
-  <%= @mentor.expertise %>
-</p>
 
-<% if @mentor.user == current_user %>
-<%= link_to 'Edit', edit_mentor_path(@mentor) %> |
-<% end %>
-
-<%= link_to 'Back', mentors_path %>

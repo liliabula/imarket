@@ -1,43 +1,61 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Mentors</h1>
+<!-- h1>Listing Mentors</h1> -->
 
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Name</th>
-      <th>Profession</th>
-      <th>Location</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th>Industries</th>
-      <th>Expertise</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
+  <% @mentors.each do |mentor| %>
+    <div class="col s12">
+      <div class="card horizontal">
+        <div class="card-image waves-effect waves-block waves-light ">
+          <%= image_tag mentor.cover.url(:medium), class: "activator " %>
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"><%= mentor.name %><i class="material-icons right">more_vert</i></span>
+            <div>
+              <span><%= mentor.profession %></span>
+            </div>
+            <div>
+              <span><%= mentor.location %></span>
+            </div>
+            <div>
+              <span class="right"> <%= number_to_currency(mentor.price) %></span>
+            </div>
+            <br>
+            <div>
+              <span class="right"><%= link_to 'View Profile', mentor, class: "btn"%></span>
+            </div>
+            <% if mentor.user == current_user %>
+              <br>
+              <br>
+              <div>
+                <span class="right">
+                <p>
+                  <%= link_to 'Edit', edit_mentor_path(mentor) %>
+                  <%= link_to 'Destroy', mentor, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </p>
+                </span>
+              </div>
+              <% end %>
+          </div>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4"><%= mentor.name %><i class="material-icons right">close</i></span>
+          <div>
+            <span><%= mentor.industries %></span>
+          </div>
+          <div>
+            <span><%= mentor.expertise %></span>
+          </div>
+          <p><%= mentor.description %></p>
+        </div> 
+        </div>
+      </div>
+    </div>
+  <% end %> 
+</div>
 
-  <tbody>
-    <% @mentors.each do |mentor| %>
-      <tr>
-        <td><%= image_tag mentor.cover.url(:thumb)%></td>
-        <td><%= mentor.name %></td>
-        <td><%= mentor.profession %></td>
-        <td><%= mentor.location %></td>
-        <td><%= mentor.price %></td>
-        <td><%= mentor.description %></td>
-        <td><%= mentor.industries %></td>
-        <td><%= mentor.expertise %></td>
-        <td><%= link_to 'Show', mentor %></td>
-        <% if mentor.user == current_user %>
-          <td><%= link_to 'Edit', edit_mentor_path(mentor) %></td>
-          <td><%= link_to 'Destroy', mentor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
+   <%= link_to 'New Mentor', new_mentor_path %>
 <br>
 
-<%= link_to 'New Mentor', new_mentor_path %>
