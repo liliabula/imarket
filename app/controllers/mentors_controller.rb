@@ -3,7 +3,7 @@ class MentorsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :check_user, only: [:edit, :update, :destroy]
   def index
-    @mentors = Mentor.all
+    @mentors = Mentor.all.paginate(:page => params[:page], :per_page => 1)
   end
 
   def show
