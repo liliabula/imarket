@@ -29,21 +29,24 @@
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: "materialize-textarea"%>
   </div>
   <div class="field">
     <%= f.label :industries %><br>
-    <%= f.text_area :industries %>
+    <%= f.text_area :industries, class: "materialize-textarea" %>
   </div>
   <div class="field">
     <%= f.label :expertise %><br>
-    <%= f.text_area :expertise %>
+    <%= f.text_area :expertise, class: "materialize-textarea" %>
   </div>
   <div class="field">
-    <%= f.label :cover %><br>
+    <label class="grey-text">Upload profile image </label>
     <%= f.file_field :cover %>
   </div>
+  <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Become a Mentor', class: "btn btn-form"%>
+    <br>
   </div>
+  <br>
 <% end %>
