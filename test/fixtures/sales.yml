@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email_user: MyString
+  email_mentor: MyString
+  guid: MyString
+  mentor_id: 1
+
+two:
+  email_user: MyString
+  email_mentor: MyString
+  guid: MyString
+  mentor_id: 1

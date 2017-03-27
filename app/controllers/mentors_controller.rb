@@ -53,11 +53,11 @@ class MentorsController < ApplicationController
   private
 
     def set_mentor
-      @mentor = Mentor.find(params[:id])
+      @mentor = Mentor.friendly.find(params[:id])
     end
 
     def mentor_params
-      params.require(:mentor).permit(:name, :profession, :location, :price, :description, :industries, :expertise, :cover)
+      params.require(:mentor).permit(:name, :profession, :location, :price, :description, :industries, :expertise, :cover, :company)
     end
 
     def check_user

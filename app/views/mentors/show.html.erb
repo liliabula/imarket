@@ -3,29 +3,33 @@
 <div class="row">
   <div class="col l4">
     <%= image_tag @mentor.cover.url(:medium), class: "img-circular show-img"%>
-    <p>
-      <strong>Price:</strong>
-      <%= number_to_currency(@mentor.price) %>
-    </p>
-    <p>
-      <strong>Rating</strong>
-    </p>
-    <span> <%= link_to 'Book a Call', mentors_path, class: "btn btn-devise"%></span>
     <br>
+    <div class="profile-header">
+        <p class="summary-positioning"> Summary</p>
+    </div>
+    <div class="profile-border">
+      <p class="light">
+        <strong>Price:</strong>
+        <%= number_to_currency(@mentor.price) %>
+      </p>
+      <p><strong>Rating</strong></p>
+      <span> <%= link_to 'Book a Call', mentors_path, class: "btn btn-devise"%></span>
+      <br>
+    </div>
   </div>
-  <div class="col l5">
-    <h3>Hey, I'm <%= @mentor.name %></h3>
-    <p><strong><%= @mentor.profession %></strong></p>
+  <div class="col l8">
+    <h3 class="light">Hey, I'm <%= @mentor.name %></h3>
+    <p><strong><%= @mentor.profession %></strong> at <%= @mentor.company %></p>
     <p><strong>Location:</strong>
       <%= @mentor.location %></p>
-    <p><%= @mentor.description %></p>
+    <p class="light"><%= @mentor.description %></p>
     <br>
-    <p>
+    <p class="light">
     <strong>Industries:</strong>
     <%= @mentor.industries %>
     </p>
 
-    <p>
+    <p class="light">
     <strong>Expertise:</strong>
     <%= @mentor.expertise %>
     </p>

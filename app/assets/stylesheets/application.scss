@@ -66,6 +66,10 @@ footer.page-footer {
   	font-size: 3em;
   }
 
+  h3{
+    color: rgba(0, 0, 0, .87);
+  }
+
   main {
     flex: 1 0 auto;
   }
@@ -82,10 +86,21 @@ footer.page-footer {
 
 .show-img{
     margin: 0 auto;
+
 }
 
 .btn-form{
 	width: 100%;
 }
 
-
+.profile-border{
+  border:1px solid rgb(237, 239, 237);
+  padding: 5%;
+}
+.profile-header{
+  border:1px solid rgb(237, 239, 237);
+  background-color: #edefed;
+}
+.summary-positioning{
+  padding: 5%;
+}

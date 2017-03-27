@@ -27,7 +27,8 @@ gem 'devise'
 gem "paperclip", "~> 5.0.0"
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-materialize'
-
+gem 'friendly_id', '~> 5.1.0'
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
