@@ -10,7 +10,7 @@ class Mentor < ActiveRecord::Base
   	validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/
 
 	validates :name, :profession, :location, :description, :price, :industries, :expertise, :company, presence: true
-	validates :price, numericality: { greater_than: 49 }
+	validates :price, numericality: { greater_than: 0.49 }
 	validates :cover, attachment_presence: true
 
 end

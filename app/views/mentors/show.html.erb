@@ -40,7 +40,7 @@
       <script
         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-        data-amount="<%= (@mentor.price * 100).floor %>"
+        data-amount="<%= (@mentor.price * 100) %>"
         data-name="MentorBar"
         data-description="<%= @mentor.name %>"
         data-email="<% current_user.email %>"
