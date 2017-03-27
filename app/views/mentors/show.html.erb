@@ -33,23 +33,36 @@
     <strong>Expertise:</strong>
     <%= @mentor.expertise %>
     </p>
+
+    <% if current_user %>
+
+      <%= form_tag call_path(slug: @mentor.slug) do %>
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+        data-amount="<%= (@mentor.price * 100).floor %>"
+        data-name="MentorBar"
+        data-description="<%= @mentor.name %>"
+        data-email="<% current_user.email %>"
+        data-locale="auto"
+        data-zip-code="true"
+        data-currency="gbp">
+      </script>
+    <% end %>
+
+    <% else %>
+      <%= link_to "Login to Call", user_session_path %>
+    <% end %>
+    <br>
+   
     <% if @mentor.user == current_user %>
-    <%= link_to 'Edit', edit_mentor_path(@mentor) %> |
+    <%= link_to 'Edit', edit_mentor_path(@mentor) %>
     <% end %>
     <%= link_to 'Back', mentors_path %>
   </div>
 
 </div>
 
-<div class="row">
-  <div class="col l4">
-    
-  </div>
-  <div class="col l1">
-  </div>
-  <div class="col l5">
-    
-  </div>
 
 
 
