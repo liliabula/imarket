@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'about' => 'pages#about'
   get 'bementor' => 'pages#bementor'
+  get 'dashboard' => 'pages#dashboard'
 
   post '/call/:slug', to:'transactions#create', as: :call
 

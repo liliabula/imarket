@@ -1,0 +1,52 @@
+<br>
+
+ <div class="row">
+    <div class="col s12 l12">
+      <ul class="tabs">
+        <li class="tab col s6"><a href="#Student"><p class="dashboard-tab">Your Student Dashboard</p></a></li>
+        <li class="tab col s6"><a class="active" href="#Mentor"><p class="dashboard-tab">Your Mentor Dashboard</p></a></li>
+      </ul>
+    </div>
+    <div id="Student" class="col s12 l12">
+	    <table>
+	    	<thead>
+				<tr>
+					<th>Name</th>
+					<th>Profession</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @bookedcalls.each do |bookedcalls| %>
+					<tr>
+	    				<th class="light"><%= bookedcalls.mentor.name %></th>
+	    				<th class="light"><%= bookedcalls.mentor.profession %></th>
+	    				<th class="light"><%= number_to_currency(bookedcalls.amount / 100) %></th>
+					</tr>
+				<% end %>
+			</tbody>
+	    </table>
+    </div>
+
+
+    <div id="Mentor" class="col s12 l12">
+    <table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Phone Call Length</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @receivedcalls.each do |receivedcalls| %>
+				<tr>
+    				<th class="light"><%= receivedcalls.email_user %></th>
+    				<th class="light"><%= number_to_currency(receivedcalls.amount / 100) %></th>
+    				<th class="light"> TBC </th>
+				</tr>
+			<% end %>
+		</tbody>
+    </table>
+    </div>
+  </div>
