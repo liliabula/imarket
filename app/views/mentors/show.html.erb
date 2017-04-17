@@ -1,66 +1,103 @@
-<div class="row">
-  <div class="col s12 l4">
-    <%= image_tag @mentor.cover.url(:medium), class: "img-circular show-img"%>
-    <br>
-    <div class="profile-header">
-        <p class="summary-positioning"> Summary</p>
-    </div>
-    <div class="profile-border">
-      <p class="light">
-        <strong>Price:</strong>
-        <%= number_to_currency(@mentor.price) %>
-      </p>
-      <p><strong>Rating</strong></p>
-      <span> <%= link_to 'Book a Call', mentors_path, class: "btn btn-devise"%></span>
+
+<div class="content-show">
+  <div class="row">
+    <div class="col s12 l4">
+      <%= image_tag @mentor.cover.url(:medium), class: "img-circular show-img"%>
       <br>
+      <div class="profile-header">
+          <p class="summary-positioning"> Summary</p>
+      </div>
+      <div class="profile-border">
+        <p class="light">
+          <strong>Price:</strong>
+          <%= number_to_currency(@mentor.price) %>
+        </p>   
+          <div class="average-review-rating" data-score= <%= @average_review %>>
+            <strong>Rating <span>( <%= @mentor.reviews.count %> reviews )</span>: </strong> 
+            </div>
+        </p>
+
+        <span> <%= link_to 'Book a Call', mentors_path, class: "btn btn-devise"%></span>
+        <br>
+        <br>
+        <% if @mentor.user == current_user %>
+          <span> <%= link_to 'Edit Profile', edit_mentor_path(@mentor), class: "btn btn-devise grey lighten-2" %></span>
+        <% end %>
+        <br>
+        <br>
+
+        <% if current_user %>
+
+        <%= form_tag call_path(id: @mentor.id) do %>
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-amount="<%= (@mentor.price * 100).floor %>"
+          data-name="MentorBar"
+          data-description="<%= @mentor.name %>"
+          data-email="<% current_user.email %>"
+          data-locale="auto"
+          data-zip-code="true"
+          data-currency="gbp">
+        </script>
+      <% end %>
+
+      <% else %>
+        <%= link_to "Login to Call", user_session_path %>
+      <% end %>
+
+        <br>
+      </div>
     </div>
+    <div class="col l8">
+      <h3 class="light">Hey, I'm <%= @mentor.name %></h3>
+      <p><strong><i class="material-icons">work</i> <%= @mentor.profession %></strong> at <%= @mentor.company %>
+      <strong><i class="material-icons">location_on</i></strong>
+        <%= @mentor.location %></p>
+      <p class="light"><%= @mentor.description %></p>
+      <br>
+      <p class="light">
+      <strong>Industries:</strong>
+      <%= @mentor.industries %>
+      </p>
+
+      <p class="light">
+      <strong>Expertise:</strong>
+      <%= @mentor.expertise %>
+      </p>
+      <hr class="divider-normal">
+      <h5> Customer Reviews</h5>
+      <%= render @mentor.reviews %>
+      <br>
+      <span> <%= link_to 'Write a customer review', new_mentor_review_path(@mentor), class: "btn" %></span>
+      
+    </div>
+
+   <!-- <%= link_to 'Back', mentors_path %> -->
+
   </div>
-  <div class="col l8">
-    <h3 class="light">Hey, I'm <%= @mentor.name %></h3>
-    <p><strong><%= @mentor.profession %></strong> at <%= @mentor.company %></p>
-    <p><strong>Location:</strong>
-      <%= @mentor.location %></p>
-    <p class="light"><%= @mentor.description %></p>
-    <br>
-    <p class="light">
-    <strong>Industries:</strong>
-    <%= @mentor.industries %>
-    </p>
-
-    <p class="light">
-    <strong>Expertise:</strong>
-    <%= @mentor.expertise %>
-    </p>
-
-    <% if current_user %>
-
-      <%= form_tag call_path(slug: @mentor.slug) do %>
-      <script
-        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-        data-amount="<%= (@mentor.price * 100) %>"
-        data-name="MentorBar"
-        data-description="<%= @mentor.name %>"
-        data-email="<% current_user.email %>"
-        data-locale="auto"
-        data-zip-code="true"
-        data-currency="gbp">
-      </script>
-    <% end %>
-
-    <% else %>
-      <%= link_to "Login to Call", user_session_path %>
-    <% end %>
-    <br>
-   
-    <% if @mentor.user == current_user %>
-    <%= link_to 'Edit', edit_mentor_path(@mentor) %>
-    <% end %>
-    <%= link_to 'Back', mentors_path %>
-  </div>
-
 </div>
 
+
+<script>
+  $('.review-rating').raty({
+      readOnly: true,
+      score: function(){
+        return $(this).attr('data-score');
+      },
+      path: '/assets/'
+  })
+</script>
+
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  })
+</script>
 
 
 

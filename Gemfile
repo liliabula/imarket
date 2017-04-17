@@ -31,7 +31,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'stripe'
 gem 'aasm'
-
+gem 'simple_form', '~> 3.2', '>= 3.2.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -2,11 +2,17 @@ class MentorsController < ApplicationController
   before_action :set_mentor, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :check_user, only: [:edit, :update, :destroy]
+  
   def index
-    @mentors = Mentor.all.paginate(:page => params[:page], :per_page => 1)
+    @mentors = Mentor.all.paginate(:page => params[:page], :per_page => 4)
   end
 
   def show
+    if @mentor.reviews.blank?
+      @average_review = 0
+    else
+      @average_review = @mentor.reviews.average(:rating).round(2)
+    end
   end
 
   def new
@@ -53,7 +59,7 @@ class MentorsController < ApplicationController
   private
 
     def set_mentor
-      @mentor = Mentor.friendly.find(params[:id])
+      @mentor = Mentor.find(params[:id])
     end
 
     def mentor_params

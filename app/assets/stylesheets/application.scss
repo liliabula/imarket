@@ -4,6 +4,9 @@ nav ul a,
 nav .brand-logo {
   color: #444;
 }
+.content-show{
+  margin-top: 5%;
+}
 
 p {
   line-height: 2rem;
@@ -54,6 +57,11 @@ footer.page-footer {
 
 .btn-devise {
 	width: 100%;
+  color: white;
+}
+
+.btn-user {
+  width: 100%;
   color: white;
 }
 
@@ -108,4 +116,11 @@ footer.page-footer {
 
 .dashboard-tab{
   color: rgb(0, 150, 136);
+}
+.divider-normal{
+  background: 0 0!important;
+    border-top: 1px solid #CCC!important;
+    margin-bottom: -36px!important;
+    height: 44px!important;
+    border: 0;
 }
