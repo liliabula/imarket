@@ -1,55 +1,47 @@
-<!-- h1>Listing Mentors</h1> -->
 
 <div class="content-show">
+
+<% @mentors.each do |mentor| %>
   <div class="row">
-  <% @mentors.each do |mentor| %>
-  <div class="col s12 m12">
-  <div class="col s4 waves-effect waves-block waves-light ">
-  <%= image_tag mentor.cover.url(:medium), class: "img-circular activator" %>
-  </div>
-  <div class="col s6">
+    <div class="col l12 s12 m12">
+      <div class="col s4 waves-effect waves-block waves-light ">
+        <%= image_tag mentor.cover.url(:medium), class: "img-circular-index activator" %>
+      </div>
+        
+        <div class="col s6">
+          <div>
+            <span><%= mentor.name %></span>
+          </div>
 
-  <div>
-  <span><%= mentor.name %></span>
-  </div>
-  <div>
-  <span><%= mentor.expertise %></span>
-  </div>
-  <div>
-  <span><%= mentor.location %></span>
-  </div>
-  <div>
-  <span class="right"> <%= number_to_currency(mentor.price) %></span>
-  </div>
-  <br>
-  <div>
-  <span class="right"><%= link_to 'View Profile', mentor, class: "btn"%></span>
-  </div>
-  <% if mentor.user == current_user %>
-  <br>
-  <br>
-  <div>
-  <span class="right">
-  <p>
-  <%= link_to 'Edit', edit_mentor_path(mentor) %>
-  <%= link_to 'Destroy', mentor, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
-  </span>
-  </div>
-  <% end %>
-  </div>
-  </div>
-  </div>
-  <hr class="divider-normal">
-  <% end %> 
-  </div>
-  </div>
+          <div>
+            <span><%= mentor.expertise %></span>
+          </div>
 
+          <div>
+            <span><%= mentor.location %></span>
+          </div>
+
+          <div>
+            <span class="right"> <%= number_to_currency(mentor.price) %></span>
+          </div>
+
+          <br>
+          <div>
+            <span class="right"><%= link_to 'View Profile', mentor, class: "btn"%></span>
+          </div>
+      </div>
+    </div>
+  </div>
+<hr class="divider-normal">
+<br>
+<% end %> 
+
+  
+  <br>
    <%= link_to 'New Mentor', new_mentor_path %>
   <br>
-
   <%= will_paginate @mentors %>
 
-</div>
+
 
 

@@ -14,15 +14,10 @@
         </p>   
           <div class="average-review-rating" data-score= <%= @average_review %>>
             <strong>Rating <span>( <%= @mentor.reviews.count %> reviews )</span>: </strong> 
-            </div>
+          </div>
         </p>
 
         <span> <%= link_to 'Book a Call', mentors_path, class: "btn btn-devise"%></span>
-        <br>
-        <br>
-        <% if @mentor.user == current_user %>
-          <span> <%= link_to 'Edit Profile', edit_mentor_path(@mentor), class: "btn btn-devise grey lighten-2" %></span>
-        <% end %>
         <br>
         <br>
 
@@ -45,7 +40,16 @@
       <% else %>
         <%= link_to "Login to Call", user_session_path %>
       <% end %>
-
+      </div>
+      <br>
+      <div>
+        <% if @mentor.user == current_user %>
+          <span> <%= link_to 'Edit Profile', edit_mentor_path(@mentor), class: "btn btn-devise grey lighten-2" %></span>
+          <br>
+          <br>
+         <%= link_to 'Destroy', @mentor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-devise grey lighten-2"%>
+        <% end %>
+        <br>
         <br>
       </div>
     </div>

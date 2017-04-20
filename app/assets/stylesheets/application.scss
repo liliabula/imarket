@@ -93,6 +93,16 @@ footer.page-footer {
  -moz-border-radius: 100px;
 }
 
+ .img-circular-index{
+ width: 180px;
+ height: 180px;
+ background-size: cover;
+ display: block;
+ border-radius: 90px;
+ -webkit-border-radius: 100px;
+ -moz-border-radius: 100px;
+}
+
 .show-img{
     margin: 0 auto;
 
@@ -123,4 +133,8 @@ footer.page-footer {
     margin-bottom: -36px!important;
     height: 44px!important;
     border: 0;
+}
+
+.button-index{
+  color: rgb(44,201,186);
 }
