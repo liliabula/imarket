@@ -13,17 +13,17 @@
 //= require jquery
 //= require materialize-sprockets
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require date_fns
+//= require jquery.datetimepicker.full
+//= require jquery.raty
+//= require reservations
 
 
-(function($){
-  $(function(){
+$(function(){
 
-    $('.button-collapse').sideNav();
-    $('.parallax').parallax();
+  $('.button-collapse').sideNav();
+  $('.parallax').parallax();
+  $('ul.tabs').tabs();
 
-  }); // end of document ready
-})(jQuery); // end of jQuery name space
-
+}); // end of document ready
 
