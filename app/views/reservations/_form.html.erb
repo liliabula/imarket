@@ -1,0 +1,12 @@
+
+<%= form_for ([@mentor, @mentor.reservations.new]) do |f| %>
+
+<%= f.text_field :start_date %>
+<%= f.text_field :end_date %>
+<%= f.hidden_field :mentor_id, value: @mentor.id %>
+<%= f.hidden_field :price, value: @mentor.price %>
+
+<br>
+<%= f.submit "Book Now", class: "btn" %>
+
+<% end %>

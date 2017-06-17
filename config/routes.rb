@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   resources :mentors do
     resources :reviews
+    resources :reservations
   end
 
 

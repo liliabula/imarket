@@ -16,6 +16,7 @@
             <strong>Rating <span>( <%= @mentor.reviews.count %> reviews )</span>: </strong> 
           </div>
         </p>
+        <%= render 'reservations/form'%>
 
         <span> <%= link_to 'Book a Call', mentors_path, class: "btn btn-devise"%></span>
         <br>
@@ -71,7 +72,9 @@
       </p>
       <hr class="divider-normal">
       <h5> Customer Reviews</h5>
+
       <%= render @mentor.reviews %>
+      
       <br>
       <span> <%= link_to 'Write a customer review', new_mentor_review_path(@mentor), class: "btn" %></span>
       

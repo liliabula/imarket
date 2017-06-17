@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  mentor_id: 
+  start_date: 2017-06-13 00:35:13
+  end_date: 2017-06-13 00:35:13
+  price: 1
+  total: 1
+
+two:
+  user_id: 
+  mentor_id: 
+  start_date: 2017-06-13 00:35:13
+  end_date: 2017-06-13 00:35:13
+  price: 1
+  total: 1
