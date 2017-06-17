@@ -17,7 +17,7 @@
 //= require_tree .
 
 
- (function($){
+(function($){
   $(function(){
 
     $('.button-collapse').sideNav();
@@ -27,4 +27,3 @@
 })(jQuery); // end of jQuery name space
 
 
-        
